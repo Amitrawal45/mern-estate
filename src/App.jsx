@@ -1,8 +1,22 @@
-import React from 'react'
+import{BrowserRouter,Routes,Route} from 'react-router-dom';
+import Home from './Pages/Home';
+import Profile from './Pages/Profile';
+import Signin from './Pages/Signin';
+import SignOut from './Pages/Signup';
+import About from './Pages/About';
 
 function App() {
   return (
-    <h1 className='text-red-500'>App</h1>
+    <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/about" element={<About />} />
+      <Route path="/sign-in" element={<Signin />} />
+      <Route path="/sign-up" element={<SignOut />} />
+      <Route path="/profile" element={<Profile />} />
+      
+    </Routes>
+    </BrowserRouter>
   )
 }
  
