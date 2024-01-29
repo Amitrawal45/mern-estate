@@ -1,12 +1,15 @@
 import React, { useState } from "react";
-import { Link,useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { signInStart,signInSuccess,signInFailure } from "../redux/user/userSlice";
+import {
+  signInStart,
+  signInSuccess,
+  signInFailure,
+} from "../redux/user/userSlice";
 
-
-const Signup = () => {
+const Signin = () => {
   const [formData, setFormData] = useState({});
-  const [loading,error] = useSelector((state)=>state.user);
+  const { loading, error } = useSelector((state) => state.user);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -30,17 +33,17 @@ const Signup = () => {
         body: JSON.stringify(formData),
       });
       const data = await res.json();
-      console.log(data);
+      console.log(error);
 
       if (data.success === false) {
         dispatch(signInFailure(data.message));
         return;
       }
 
-     dispatch(signInSuccess(data.message));
+      dispatch(signInSuccess(data.message));
       navigate("/");
     } catch (error) {
-     dispatch(signInFailure(error.message));
+      dispatch(signInFailure(error.message));
     }
   };
 
@@ -48,7 +51,6 @@ const Signup = () => {
     <div className="p-3 max-w-lg mx-auto">
       <h1 className="text-3xl text-center font-semibold my-7">Sign In</h1>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-     
         <input
           type="email"
           placeholder="email"
@@ -81,4 +83,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default Signin;
