@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link,useNavigate } from "react-router-dom";
-import { UseDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { signInStart,signInSuccess,signInFailure } from "../redux/user/userSlice";
 
 
@@ -8,7 +8,7 @@ const Signup = () => {
   const [formData, setFormData] = useState({});
   const [loading,error] = useSelector((state)=>state.user);
   const navigate = useNavigate();
-  const dispatch = UseDispatch();
+  const dispatch = useDispatch();
 
   const handleChange = (e) => {
     setFormData({
